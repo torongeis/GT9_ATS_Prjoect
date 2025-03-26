@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispute Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #4ed94a;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: transform 0.3s ease;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+        }
+        .sidebar ul li a:hover, .sidebar ul li.active a {
+            background: #004e26;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            margin: 10px;
+        }
+        .top-bar {
+            margin-top: -20px;
+            background-color: #4ed94a;
+            padding: 15px;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 250px;
+        }
+        .search-bar {
+            margin-bottom: 15px;
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .search-bar button {
+            background: #4ed94a;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #4ed94a;
+            color: white;
+        }
+        .view-btn {
+            background: #fea500;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                width: 200px;
+                height: 100%;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="menu-toggle">☰</button>
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <div class="logo">
+                                <img src="ntsa.png" alt="Logo">
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="violations_management.html">Violations Management</a></li>
+                    <li><a href="fine_issuance_payment.html">Fine Issuance & Payment</a></li>
+                    <li class="active"><a href="#">Dispute Management</a></li>
+                    <li><a href="reports_&_anaytics.html">Reports & Analytics</a></li>
+                    <li><a href="sys_admin.html">User & System Administration</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="top-bar">
+                NTSA Dispute Management
+            </header>
+            <section class="dispute-table">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search disputes...">
+                    <button>Search</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. Plate</th>
+                            <th>Name</th>
+                            <th>Violation</th>
+                            <th>Dispute Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>KDQ 000A</td>
+                            <td>Mark Wambugu</td>
+                            <td>Over Speeding</td>
+                            <td class="pending">Pending</td>
+                            <td><button class="view-btn">View Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>KDT 674E</td>
+                            <td>Linet Achieng</td>
+                            <td>Running Red Light</td>
+                            <td class="resolved">Resolved</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>KDA 123A</td>
+                            <td>Brent Jure</td>
+                            <td>Reckless Driving</td>
+                            <td class="review">Under Review</td>
+                            <td><button class="view-btn">View Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".sidebar").classList.toggle("active");
+        });
+    </script>
+</body>
+</html>

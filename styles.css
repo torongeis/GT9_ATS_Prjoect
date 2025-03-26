@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Layout */
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #4dd94a;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding: 15px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: background 0.3s;
+    padding: 10px 20px;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li.active a {
+    background: #004e26;
+}
+
+/* Content */
+.content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+/* Top Bar */
+.top-bar {
+    background: #4dd94a;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Container */
+.violations-table {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #4dd94a;
+    color: white;
+    text-transform: uppercase;
+}
+
+td {
+    background: #fff;
+}
+
+/* Fine Status Styles */
+.status-btn {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: default;
+    text-align: center;
+    width: 90px;
+    display: inline-block;
+}
+
+.paid {
+    background: #28a745;
+    color: white;
+}
+
+.unpaid {
+    background: #dc3545;
+    color: white;
+}
+
+.pending {
+    background: #ffc107;
+    color: black;
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+        height: auto;
+        position: fixed;
+        background: #4dd94a;
+        text-align: center;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

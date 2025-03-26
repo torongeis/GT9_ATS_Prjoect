@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #4ed94a;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: transform 0.3s ease;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+        }
+        .sidebar ul li a:hover, .sidebar ul li.active a {
+            background: #004e26;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            margin: 10px;
+        }
+        .top-bar {
+            background-color: #4ed94a;
+            padding: 15px;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 250px;
+        }
+        .dashboard-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .widget {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .widget h3 {
+            color: #4ed94a;
+        }
+        .charts-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .chart-box {
+            flex: 1;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 40%;
+        }
+        .recent-activity {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #4ed94a;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="menu-toggle">☰</button>
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <div class="logo">
+                                <img src="ntsa.png" alt="Logo">
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="active" class="active">Dashboard</a></li>
+                    <li><a href="violations_management.html">Violations Management</a></li>
+                    <li><a href="fine_issuance_payment.html">Fine Issuance & Payment</a></li>
+                    <li><a href="dispute_management.html">Dispute Management</a></li>
+                    <li><a href="reports_&_anaytics.html">Reports & Analytics</a></li>
+                    <li><a href="sys_admin.html">Reports & Analytics</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="top-bar">Dashboard</header>
+            <section class="dashboard-widgets">
+                <div class="widget"><h3>Active Users</h3><p>1,746</p></div>
+                <div class="widget"><h3>Total Violations</h3><p>1,245</p></div>
+                <div class="widget"><h3>Pending Fines</h3><p>KES 530,000</p></div>
+                <div class="widget"><h3>Resolved Disputes</h3><p>320</p></div>
+            </section>
+            <section class="charts-container">
+                <div class="chart-box">
+                    <h3>Monthly Fines Collected</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Fine Distribution</h3>
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </section>
+            <section class="recent-activity">
+                <h3>Recent Activity</h3>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>User</th>
+                        <th>Activity</th>
+                    </tr>
+                    <tr><td>2025-03-20</td><td>Admin</td><td>Fine Issued</td></tr>
+                    <tr><td>2025-03-19</td><td>Officer</td><td>Dispute Resolved</td></tr>
+                    <tr><td>2025-03-18</td><td>Admin</td><td>Violation Recorded</td></tr>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".sidebar").classList.toggle("active");
+        });
+        new Chart(document.getElementById("barChart"), {
+            type: "bar",
+            data: { labels: ["Jan", "Feb", "Mar", "Apr", "May"], datasets: [{ label: "Fines Collected", data: [200, 450, 300, 500, 600], backgroundColor: "#4ed94a" }] }
+        });
+        new Chart(document.getElementById("pieChart"), {
+            type: "pie",
+            data: { labels: ["Paid", "Pending", "Disputed"], datasets: [{ data: [60, 25, 15], backgroundColor: ["#4ed94a", "#f4c242", "#e74c3c"] }] }
+        });
+    </script>
+</body>
+</html>
