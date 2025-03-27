@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTSA Portal User & System Administration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background: #4ed94a;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+            margin: auto;
+            max-width: 900px;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .search-bar button {
+            background: #4ed94a;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #4ed94a;
+            color: white;
+        }
+        .add-user-btn {
+            background: #fea500;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .logout-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logout-btn {
+            background: #d9534f;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="dashboard.html">
+        <div class="logo">
+            <img src="ntsa.png" alt="Logo">
+        </div>
+    </a>
+    <div class="navbar">User & System Administration</div>
+    <div class="logout-container">
+        <h2><a href="login.html">Logout</a></h2>
+        <p>Are you sure you want to logout?</p>
+        <button class="logout-btn"><a href="login.html">Logout</a></button>
+    </div>
+</body>
+</html>
